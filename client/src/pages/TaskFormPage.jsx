@@ -68,11 +68,17 @@ export function TaskFormPage() {
           className="bg-zinc-700 p-3 rounded-lg block w-full"
         />
 
+      
+
         {errors.description && <span>Este campo es requerido</span>}
 
         <button className="bg-indigo-500 p-3 rounded-lg block w-full mt-3">
           Guardar/Editar
-        </button>
+        </button > 
+        
+        <input type="checkbox" className="chk" title="MARCAR COMO HECHA"></input>
+        
+        
       </form>
 
       {params.id && (
