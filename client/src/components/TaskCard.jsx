@@ -14,7 +14,7 @@ export function TaskCard({ task }) {
         {task.title}
       </h1>
       <p className="text-slate-200">{task.description}</p>
-      <p className="text-slate-500">{"Fecha de creacion"} {task.created}</p>
+      <p className="text-slate-500">{"Fecha de creacion"} {task.created }  </p>
     </div>
   );
 }
