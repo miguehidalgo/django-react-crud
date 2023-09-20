@@ -76,7 +76,7 @@ export function TaskFormPage() {
           Guardar/Editar
         </button > 
         
-        <input type="checkbox" className="chk" title="MARCAR COMO HECHA"></input>
+        
         
         
       </form>
