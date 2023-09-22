@@ -18,19 +18,21 @@ export function TaskFormPage() {
     if (params.id) {
       await updateTask(params.id, data);
       toast.success("Tarea Actualizada", {
-        position: "bottom-right",
+        position: "bottom-center",
         style: {
           background: "#101010",
           color: "#fff",
+          fontSize:40,
         },
       });
     } else {
       await createTask(data);
-      toast.success("Nueva Tarea gregada", {
-        position: "bottom-right",
+      toast.success("Nueva Tarea agregada", {
+        position: "bottom-center",
         style: {
           background: "#101010",
           color: "#fff",
+          fontSize:40,
         },
       });
     }
@@ -90,10 +92,11 @@ export function TaskFormPage() {
               if (accepted) {
                 await deleteTask(params.id);
                 toast.success("Tarea Eliminada", {
-                  position: "bottom-right",
+                  position: "bottom-center",
                   style: {
                     background: "#101010",
                     color: "#fff",
+                    fontSize:40,
                   },
                 });
                 navigate("/tasks");

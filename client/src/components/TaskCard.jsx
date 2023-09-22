@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { updateTask } from "../api/tasks.api"; // Asegúrate de importar la función updateTask desde tu API
+import { updateTask } from "../api/tasks.api"; 
 
 export function TaskCard({ task }) {
   const navigate = useNavigate();
