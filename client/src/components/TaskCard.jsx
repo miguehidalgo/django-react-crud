@@ -6,13 +6,8 @@ export function TaskCard({ task }) {
 
   const handleCheckboxChange = async () => {
     try {
-     
       const updatedTask = { ...task, done: !task.done };
-      
-      
       await updateTask(task.id, updatedTask);
-      
-      
       navigate(`/tasks/${task.id}`);
     } catch (error) {
       

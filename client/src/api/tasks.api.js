@@ -19,3 +19,12 @@ export const createTask = (task) => tasksApi.post("/", task);
 export const updateTask = (id, task) => tasksApi.put(`/${id}/`, task);
 
 export const deleteTask = (id) => tasksApi.delete(`/${id}`);
+
+export async function searchTasks(query) {
+  try {
+    const response = await tasksApi.get("/search", { params: { query } });
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+}
