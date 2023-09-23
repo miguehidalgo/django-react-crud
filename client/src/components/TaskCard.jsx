@@ -6,22 +6,22 @@ export function TaskCard({ task }) {
 
   const handleCheckboxChange = async () => {
     try {
-      // Cambiar el estado de done localmente
+     
       const updatedTask = { ...task, done: !task.done };
       
-      // Realizar una solicitud PUT a la API para actualizar el estado en el servidor
+      
       await updateTask(task.id, updatedTask);
       
-      // Redirigir a la página de detalles de la tarea después de la actualización
+      
       navigate(`/tasks/${task.id}`);
     } catch (error) {
-      // Manejar errores de solicitud si es necesario
+      
     }
   };
 
   return (
     <div
-      className="bg-zinc-800 p-8 hover:bg-zinc-700 hover:cursor-pointer"
+      className="bg-zinc-900 p-8 hover:bg-zinc-700 hover:cursor-pointer rounded-2xl "
       onClick={() => {
         navigate(`/tasks/${task.id}`);
       }}
