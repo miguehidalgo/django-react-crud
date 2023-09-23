@@ -9,9 +9,9 @@ export function Navigation() {
 
  
   return (
-    <div className="flex justify-between py-3 items-center">
+    <div className="flex justify-between py-2 items-center">
       <Link to="/tasks">
-        <h1 className="font-bold text-5xl mb-4">LISTA DE TAREAS</h1>
+        <h1 className="font-bold text-5xl mb-1">LISTA DE TAREAS</h1>
       </Link>
 
       

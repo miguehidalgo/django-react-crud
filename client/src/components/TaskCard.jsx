@@ -16,7 +16,7 @@ export function TaskCard({ task }) {
 
   return (
     <div
-      className="bg-zinc-900 p-8 hover:bg-zinc-700 hover:cursor-pointer rounded-2xl "
+      className="bg-black p-8 hover:bg-zinc-700 hover:cursor-pointer rounded-2xl "
       onClick={() => {
         navigate(`/tasks/${task.id}`);
       }}

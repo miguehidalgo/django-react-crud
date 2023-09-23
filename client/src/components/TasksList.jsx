@@ -2,11 +2,18 @@ import { useEffect, useState } from "react";
 import { getAllTasks } from "../api/tasks.api";
 import { TaskCard } from "./TaskCard";
 import { Link } from "react-router-dom";
+import DatePicker from "react-datepicker";
+import { format, isSameDay, parseISO } from "date-fns";
+
+import "react-datepicker/dist/react-datepicker.css";
 
 export function TasksList() {
   const [tasks, setTasks] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
-  const [filterDone, setFilterDone] = useState(null); 
+  const [filterDone, setFilterDone] = useState(null);
+  const [selectedDate, setSelectedDate] = useState(null);
+
+  const formattedSelectedDate = selectedDate ? format(selectedDate, "yyyy-MM-dd") : null;
 
   useEffect(() => {
     async function loadTasks() {
@@ -16,16 +23,29 @@ export function TasksList() {
     loadTasks();
   }, []);
 
-  
   const filteredTasks = tasks.filter((task) => {
     const isMatchSearch = task.title.toLowerCase().includes(searchQuery.toLowerCase());
+    const isMatchDate =
+      !formattedSelectedDate || isSameDay(parseISO(task.created), parseISO(formattedSelectedDate));
+
     if (filterDone === true) {
-      return isMatchSearch && task.done;
+      return isMatchSearch && task.done && isMatchDate;
     } else if (filterDone === false) {
-      return isMatchSearch && !task.done;
+      return isMatchSearch && !task.done && isMatchDate;
     }
-    return isMatchSearch;
+
+    return isMatchSearch && isMatchDate;
   });
+
+  const handleShowAll = () => {
+    setSelectedDate(null); // Establecer selectedDate en null para mostrar todas las tareas
+  };
+
+
+
+
+
+
 
   return (
     <div className="container mx-auto">
@@ -33,7 +53,7 @@ export function TasksList() {
 <div className="my-4">
 
       <button 
-        className=" mr-1 bg-gray-1000 p-3 rounded-lg border">
+        className=" mr-4 bg-gray-1000 p-3 rounded-lg border">
         <Link to="/tasks-create">CREAR<svg xmlns="http://www.w3.org/2000/svg" 
         width="90" height="40" fill="currentColor"  viewBox="0 0 16 16">
         <path fillRule="evenodd" d="M8 7a.5.5 0 0 1 .5.5V9H10a.5.5 0 0 1 0 
@@ -46,9 +66,14 @@ export function TasksList() {
       </button>
 
 
+      
+
       <button
-          className= {`bg-gray-600 p-3 rounded-lg mr-1 ${filterDone === null ? "" : "bg-opacity-30"}`}
-          onClick={() => setFilterDone(null)} >
+          className= {`bg-gray-600 p-3 rounded-lg mr-4 ${filterDone === null ? "" : "bg-opacity-30"}`}
+          onClick={() => {setFilterDone(null)
+            setSelectedDate(null);
+          }}
+           >
           LISTA<svg xmlns="http://www.w3.org/2000/svg" width="80" height="40" fill="currentColor" viewBox="0 0 16 16">
           <path d="M3.5 2a.5.5 0 0 0-.5.5v12a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5v-12a.5.5 0 0 0-.5-.5H12a.5.5 0 0 1 0-1h.5A1.5
            1.5 0 0 1 14 2.5v12a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 14.5v-12A1.5 1.5 0 0 1 3.5 1H4a.5.5 0 0 1 0 1h-.5Z"/>
@@ -58,7 +83,7 @@ export function TasksList() {
      </button>
 
       <button
-          className={`bg-gray-600 p-3 rounded-lg mr-1 ${filterDone === true ? "" : "bg-opacity-30"}`}
+          className={`bg-gray-600 p-3 rounded-lg mr-4 ${filterDone === true ? "" : "bg-opacity-30"}`}
           onClick={() => setFilterDone(true)} >
           TAREAS<svg xmlns="http://www.w3.org/2000/svg" 
           width="80" height="40" fill="currentColor"  viewBox="0 0 16 16">
@@ -73,7 +98,7 @@ export function TasksList() {
 
 
         <button
-          className={`bg-gray-600 p-3 rounded-lg mr-1 ${filterDone === false ? "" : "bg-opacity-30"}`}
+          className={`bg-gray-600 p-3 rounded-lg mr-4 ${filterDone === false ? "" : "bg-opacity-30"}`}
           onClick={() => setFilterDone(false)} >
           TAREAS<svg xmlns="http://www.w3.org/2000/svg"        
         width="80" height="40" fill="currentColor"  viewBox="0 0 16 16">
@@ -86,6 +111,16 @@ export function TasksList() {
         .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
         </svg>PENDIENTES
         </button>
+
+
+        <DatePicker
+          className="bg-gray-600"
+          width="80" height="40"
+          selected={selectedDate}
+          onChange={(date) => setSelectedDate(date)}
+          dateFormat="yyyy-MM-dd"
+          placeholderText="Selecciona una fecha"
+        />
        
       </div>
 
@@ -98,6 +133,11 @@ export function TasksList() {
         onChange={(e) => setSearchQuery(e.target.value)}
         placeholder="BUSCAR TAREA POR NOMBRE..."
       />
+
+
+
+
+
 
 
       <div className="grid grid-cols-3 gap-3">

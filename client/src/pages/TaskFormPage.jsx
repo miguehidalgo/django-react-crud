@@ -18,7 +18,7 @@ export function TaskFormPage() {
     if (params.id) {
       await updateTask(params.id, data);
       toast.success("Tarea Actualizada", {
-        position: "bottom-center",
+        position: "top-right",
         style: {
           background: "#101010",
           color: "#fff",
@@ -28,7 +28,7 @@ export function TaskFormPage() {
     } else {
       await createTask(data);
       toast.success("Nueva Tarea agregada", {
-        position: "bottom-center",
+        position: "top-right",
         style: {
           background: "#101010",
           color: "#fff",
@@ -92,7 +92,7 @@ export function TaskFormPage() {
               if (accepted) {
                 await deleteTask(params.id);
                 toast.success("Tarea Eliminada", {
-                  position: "bottom-center",
+                  position: "top-right",
                   style: {
                     background: "#101010",
                     color: "#fff",
