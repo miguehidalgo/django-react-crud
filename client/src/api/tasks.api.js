@@ -7,7 +7,7 @@ const URL =
 
 console.log(URL);
 const tasksApi = axios.create({
-  baseURL: `${URL}/tasks/api/v1/tasks`,
+  baseURL: `${URL}/tasks/api/tasks`,
 });
 
 export const getAllTasks = () => tasksApi.get("/");
