@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getAllTasks } from "../api/tasks.api";
 import { TaskCard } from "./TaskCard";
