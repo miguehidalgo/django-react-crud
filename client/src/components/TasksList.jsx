@@ -2,8 +2,10 @@ import { useEffect, useState } from "react";
 import { getAllTasks } from "../api/tasks.api";
 import { TaskCard } from "./TaskCard";
 import { Link } from "react-router-dom";
-import DatePicker from "react-datepicker";
+import DatePicker,{registerLocale} from "react-datepicker";
 import { format, isSameDay, parseISO } from "date-fns";
+import es from "date-fns/locale/es";
+registerLocale("es", es);
 
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -38,7 +40,7 @@ export function TasksList() {
   });
 
   const handleShowAll = () => {
-    setSelectedDate(null); // Establecer selectedDate en null para mostrar todas las tareas
+    setSelectedDate(null); 
   };
 
 
@@ -50,7 +52,7 @@ export function TasksList() {
   return (
     <div className="container mx-auto">
 
-<div className="my-4">
+<div className="my-4 flex">
 
       <button 
         className=" mr-4 bg-gray-1000 p-3 rounded-lg border">
@@ -112,27 +114,46 @@ export function TasksList() {
         </svg>PENDIENTES
         </button>
 
+        <p className="ml-5 mr-3 bg-gray-1000 pl-2 pr-1 pt-4  rounded-lg "><svg xmlns="http://www.w3.org/2000/svg" width="40" height="80" fill="currentColor"  viewBox="0 0 16 16">
+        <path d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857V3.857z"/>
+        <path d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+        </svg></p>
 
         <DatePicker
-          className="bg-gray-600"
-          width="80" height="40"
+          className= "mr-60 mt-7 pt-6 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500
+          focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-200
+          dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 text-l "
+         
+          locale="es"
           selected={selectedDate}
           onChange={(date) => setSelectedDate(date)}
-          dateFormat="yyyy-MM-dd"
-          placeholderText="Selecciona una fecha"
+          dateFormat="dd 'de' MMMM 'de' yyyy"
+          placeholderText="BUSCAR TAREA POR FECHA"
         />
-       
-      </div>
+        
+        <p className="ml-5 mr-3 mb-4  bg-gray-1000 pl-2 pr-1 pt-5  rounded-lg "><svg xmlns="http://www.w3.org/2000/svg"
+       width="40" height="80" fill="currentColor"  viewBox="0 0 16 16">
+      <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 
+      1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+      </svg></p>
 
       <input
         type="text"
-        className="p-4 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500
-        focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400
-        dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 ml-1 mr-20 mb-2 text-base"
+        className= "mr-100 mt-7 mb-8  pt-6  bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500
+          focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-200
+          dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500  "
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
         placeholder="BUSCAR TAREA POR NOMBRE..."
       />
+
+        
+       
+     
+     
+
+      </div>
+      
 
 
 
