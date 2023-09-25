@@ -22,6 +22,7 @@ from django.conf import settings
 urlpatterns = [
     path("admin/", admin.site.urls),
     path('tasks/', include('tasks.urls')),
+    path('users/', include('users.urls')),
     path('', TemplateView.as_view(template_name='index.html'), name='index'),
 ]
 

@@ -35,7 +35,7 @@ INSTALLED_APPS = [
     "django.contrib.contenttypes", "django.contrib.sessions",
     "django.contrib.messages", "django.contrib.staticfiles",
     'whitenoise.runserver_nostatic', "corsheaders", "rest_framework",
-    "coreapi", "tasks"
+    "coreapi", "tasks", "users"
 ]
 
 MIDDLEWARE = [
