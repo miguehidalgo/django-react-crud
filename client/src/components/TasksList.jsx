@@ -71,9 +71,9 @@ export function TasksList() {
       
 
       <button
-          className= {`bg-gray-600 p-3 rounded-lg mr-4 ${filterDone === null ? "" : "bg-opacity-30"}`}
+          className= {`bg-gray-600 p-3 rounded-lg mr-4 ${filterDone === null ? "" : "bg-opacity-30 "}`}
           onClick={() => {setFilterDone(null)
-            setSelectedDate(null);
+                          setSelectedDate(null);
           }}
            >
           LISTA<svg xmlns="http://www.w3.org/2000/svg" width="80" height="40" fill="currentColor" viewBox="0 0 16 16">
@@ -83,6 +83,8 @@ export function TasksList() {
           2v-.5a.5.5 0 0 0-.5-.5.5.5 0 0 1-.5-.5Z"/>
           </svg>COMPLETA
      </button>
+
+
 
       <button
           className={`bg-gray-600 p-3 rounded-lg mr-4 ${filterDone === true ? "" : "bg-opacity-30"}`}
