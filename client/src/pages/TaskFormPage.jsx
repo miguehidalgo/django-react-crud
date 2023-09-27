@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate, useParams } from "react-router-dom";
 import { createTask, deleteTask, getTask, updateTask } from "../api/tasks.api";
 import { toast } from "react-hot-toast";
+import { Navigation } from "../components/Navigation";
 
 export function TaskFormPage() {
   const {
@@ -52,8 +53,15 @@ export function TaskFormPage() {
   }, []);
 
   return (
+   
+
+    
+    
     <div className="max-w-xl mx-auto">
+       <Navigation />
+    
       <form onSubmit={onSubmit} className="bg-zinc-800 p-10 rounded-lg mt-2">
+        <h1 className="font-bold text-2xl mb-1 bg-gray- p-1 rounded-lg ">Crea, elimina o edita una tarea</h1>
         <input
           type="text"
           placeholder="Titulo"
@@ -82,6 +90,7 @@ export function TaskFormPage() {
         
         
       </form>
+      
 
       {params.id && (
         <div className="flex justify-end">

@@ -6,16 +6,18 @@ import DatePicker,{registerLocale} from "react-datepicker";
 import { format, isSameDay, parseISO } from "date-fns";
 import es from "date-fns/locale/es";
 registerLocale("es", es);
-
 import "react-datepicker/dist/react-datepicker.css";
+import { Navigation } from "../components/Navigation";
 
 export function TasksList() {
   const [tasks, setTasks] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [filterDone, setFilterDone] = useState(null);
   const [selectedDate, setSelectedDate] = useState(null);
-
   const formattedSelectedDate = selectedDate ? format(selectedDate, "yyyy-MM-dd") : null;
+ 
+  
+
 
   useEffect(() => {
     async function loadTasks() {
@@ -44,16 +46,16 @@ export function TasksList() {
   };
 
 
-
+  
 
 
 
 
   return (
     <div className="container mx-auto">
-
-<div className="my-4 flex">
-
+<Navigation />
+    <div className="my-4 flex">
+      
       <button 
         className=" mr-4 bg-gray-1000 p-3 rounded-lg border">
         <Link to="/tasks-create">CREAR<svg xmlns="http://www.w3.org/2000/svg" 
@@ -147,21 +149,9 @@ export function TasksList() {
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
         placeholder="BUSCAR TAREA POR NOMBRE..."
-      />
-
-        
-       
-     
-     
+      /> 
 
       </div>
-      
-
-
-
-
-
-
 
       <div className="grid grid-cols-3 gap-3">
         {filteredTasks.map((task) => (

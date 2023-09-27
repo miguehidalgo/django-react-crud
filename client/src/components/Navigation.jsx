@@ -3,6 +3,7 @@ import { useState } from "react";
 
 
 
+
 export function Navigation() {
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState([]);
