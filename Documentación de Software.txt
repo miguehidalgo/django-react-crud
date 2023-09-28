@@ -1,0 +1,79 @@
+DEFINICION DE PROYECTO
+
+Este proyecto tiene como objetivo la implementación de una aplicación que permita a los usuarios gestionar
+tareas diarias de manera agil y sencilla, utilizando una aplicación web que les permitirá acceder a una
+lista de tareas propia de cada usuario en la que podrán agregar, editar, eliminar, modificar, buscar y filtrar
+todas las tareas que deseen, acorde a la necesidad de cada usuario.
+
+
+
+-----------------------------------------------------------------------------------
+ESTRUCTURA DEL PROYECTO
+
+Carpeta Principal donde se realiza la Clonación
+|
+|__Proyecto_ListadeTareaV4
+                          |__django-react-crud 
+                          |                   |__client
+                          |                            |__src
+                          |                                  |__api
+                          |                                  |__components
+                          |                                  |__pages 
+                          |
+                          |__django_crud_api 
+                                            |__tasks
+                                            |__user_api
+                                            |__node_modules
+                                            |__venv 
+-----------------------------------------------------------------------------------
+FUNCIONES DISPONIBLES DE LA APLICACIÓN
+
+Registro de usuario.
+Inicio de sesión.
+Agregar tareas.
+Editar tareas.
+Marcar tareas cómo realizadas (checkbox). Cambiando el estado DONE del API de false a true.
+Filtrar tareas por hechas o pendientes / fecha de creación.
+Barra de búsqueda para localizar tareas mediante su título segun el filtro aplicado.
+
+
+-----------------------------------------------------------------------------------
+INSTALACIÓN DE PROYECTO
+
+PASOS PARA CLONAR EL PROYECTO
+Crear una carpeta nueva, abrir la terminal e insertar el siguiente comando junto con la ruta del repositorio:
+https://github.com/miguehidalgo/django-react-crud.git
+El proyecto en vite react lleva componentes extra como el datepicker para la filtracion por fecha y date-fns
+para el formato y el idioma esp. 
+Para los estilos se han utilizado librerias de Tailwind e iconos de bootstrap para la mejor comprension de
+las funciones.
+
+----------------------------------------------------------------------------------
+COMPLEMENTOS Y COMANDOS A INSTALAR PARA CORRER EL SERVIDOR
+
+En la terminal, dentro de la carpeta del proyecto, instertar los siguientes comandos:
+
+1.python -m venv venv (Crea entorno virtual)
+2.venv\Scripts\activate (Se activa entorno virtual)
+3.pip install -r requirements.txt (Se instala una serie de paquetes, entre ellos el djangorestframework', entre otros)
+4.python manage.py makemigrations (Se cargan las migraciones de sistema)
+5.python manage.py migrate (Se migra incialmente a la BD)
+6.python manage.py runserver (Inicia el servidor)
+
+#Crear SuperUsuario# (Mediante el comando python manage.py createsuperuser)
+
+7.-En una nueva terminal-
+/Dentro de la carpeta "client"/
+npm install vite (Se instala 'node_modules', estructura de Vite)
+8.npm run dev (Corre servidor del proyecto)
+
+----------------------------------------------------------------------------------
+RUTAS GENERALES DEL PROYECTO EN EJECUCIÓN
+
+http://localhost:5173/tasks (URL del proyecto)
+http://127.0.0.1:8000/tasks/api/tasks/ (URL de la API)
+http://127.0.0.1:8000/tasks/docs/ 
+http://127.0.0.1:8000/admin/
+
+
+
